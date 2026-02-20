@@ -55,5 +55,5 @@ Al multiplicar las variaciones por el *estado promedio* de la otra variable, el 
 En el código fuente de este modelo de Power Pivot, notarás la creación sistemática de medidas que suman el Periodo 1 y el Periodo 2, dividiéndolas entre 2 (Ej. `DIVIDE([PrecioP1] + [PrecioP2], 2)`). 
 
 Estas medidas representan las barras de promedio ($\overline{P}$, $\overline{Q}$, $\overline{Mix}$). Al usar la función iteradora `SUMX` para evaluar estas ecuaciones fila por fila (producto por producto), todos los términos cruzados se anulan mutuamente, logrando que la suma de los 4 impactos explique el **100% de la variación real de la ganancia ($\Delta \Pi$)** sin errores de redondeo.
----
+
 *Si llegaste aquí desde LinkedIn y el análisis de datos para la toma de decisiones te apasiona tanto como a mí, ¡no dudes en mandarme un mensaje o conectar!*
