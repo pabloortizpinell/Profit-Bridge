@@ -1,6 +1,6 @@
 # 📊 Modelo de Profit Bridge Avanzado en DAX (Descomposición Normativa)
 
-Bienvenido a este repositorio. Aquí encontrarás un modelo analítico desarrollado en **Excel (Power Pivot) con DAX**, diseñado para auditar y explicar las variaciones de rentabilidad de una empresa con precisión matemática exacta.
+Bienvenido a este repositorio. Aquí encontrarás un modelo analítico desarrollado en **Excel (Power Pivot) y Power BI con DAX**, diseñado para auditar y explicar las variaciones de rentabilidad de una empresa con precisión matemática exacta.
 
 
 
