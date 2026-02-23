@@ -1,67 +1,67 @@
-# 📊 Advanced Profit Bridge Model in DAX (FX-Adjusted Normative Decomposition)
+# 📊 Modelo Avanzado de Profit Bridge en DAX (Descomposición Normativa con Ajuste FX)
 
-Welcome to this repository. Here you will find an analytical model developed in **Power BI with DAX**, designed to audit and explain a multinational company's profitability variations with exact mathematical precision.
+Bienvenido a este repositorio. Aquí encontrarás un modelo analítico desarrollado en **Power BI con DAX**, diseñado para auditar y explicar las variaciones de rentabilidad de una empresa multinacional con precisión matemática exacta.
 
 <img width="1089" height="614" alt="image" src="https://github.com/user-attachments/assets/ed1187ea-dfeb-44a4-8566-beae445b6ea3" />
 
-## 🎯 What is this project about?
-When a multinational company's profits go up or down between two periods, executives need to know exactly *why*. Traditionally, analysts build "Profit Bridges" (Price-Volume-Mix analysis) that often leave margins of error, unexplained "cross-terms", and fail to separate operational performance from macroeconomic noise.
+## 🎯 ¿De qué trata este proyecto?
+Cuando las ganancias de una empresa multinacional suben o bajan entre dos periodos, los directivos necesitan saber exactamente *por qué*. Tradicionalmente, los analistas construyen "Puentes de Ganancias" (Análisis Price-Volume-Mix) que suelen dejar márgenes de error, "términos cruzados" sin explicar, y fallan al separar el rendimiento operativo real del ruido macroeconómico.
 
-This model applies the **Normative Decomposition** framework extended by Dr. Tim J. Smith, Kyle T. Westra, and Nathan L. Phipps in their scientific publication *"Profit bridges that disambiguate impacts of currency fluctuations from other marketing variables" (2023)*. 
+Este modelo aplica el marco de la **Descomposición Normativa** extendido por el Dr. Tim J. Smith, Kyle T. Westra y Nathan L. Phipps en su publicación científica *"Profit bridges that disambiguate impacts of currency fluctuations from other marketing variables" (2023)*. 
 
-The magic of this approach lies in using inter-period averages to perfectly isolate the impact of five key variables, without leaving a single cent unexplained:
+La magia de este enfoque radica en utilizar promedios inter-periodo para aislar perfectamente el impacto de cinco variables clave, sin dejar un solo centavo sin explicar:
 
-* **📈 Volume Impact (QI):** How much money we gained/lost by selling more or fewer units.
-* **🏷️ Price Impact (PI):** The pure effect of our price increases or decreases.
-* **⚙️ Variable Cost Impact (VI):** Operational efficiency when reducing or increasing costs.
-* **🔀 Mix Effect (MI):** How the change in the proportion of sold products impacted overall profitability (e.g., selling more of the high-margin products).
-* **💱 FX Impact (Currency Fluctuation):** How changes in foreign exchange rates artificially inflated or deflated our reported profits, isolating macroeconomic noise from actual management performance.
+* **📈 Impacto de Volumen (QI):** Cuánto dinero ganamos/perdimos por vender más o menos unidades.
+* **🏷️ Impacto de Precio (PI):** El efecto puro de nuestras subidas o bajadas de precios locales.
+* **⚙️ Impacto de Costo Variable (VI):** La eficiencia operativa al reducir o aumentar costos.
+* **🔀 Efecto Mix (MI):** Cómo impactó el cambio en la proporción de productos vendidos en la rentabilidad general (ej. vender más de los productos de alto margen).
+* **💱 Impacto FX (Fluctuación Cambiaria):** Cómo los cambios en los tipos de cambio inflaron o desinflaron artificialmente nuestras ganancias reportadas, aislando el ruido macroeconómico del desempeño real de la gerencia.
 
-## 🛠️ Tools Used
-* **Power BI:** Data modeling and interactive visualization.
-* **DAX Language:** Advanced iterative measures using `SUMX`, `CALCULATE`, and context transitions to perform row-by-row algebraic calculations.
+## 🛠️ Herramientas Utilizadas
+* **Power BI:** Modelado de datos y visualización interactiva.
+* **Lenguaje DAX:** Medidas iterativas avanzadas usando `SUMX`, `CALCULATE` y transiciones de contexto para realizar cálculos algebraicos fila por fila.
 
-## 💡 Why is it different from a traditional analysis?
-Most systems fail when calculating the **Mix Effect** because they use a single period as a static baseline, and they completely distort operational metrics when **exchange rates** are volatile. This DAX model iterates product by product, comparing margin differences, relative weights, and currency rates against a neutral state (inter-period average). 
+## 💡 ¿Por qué es diferente a un análisis tradicional?
+La mayoría de los sistemas fallan al calcular el **Efecto Mix** porque usan un solo periodo como base estática, y distorsionan por completo las métricas operativas cuando los **tipos de cambio** son volátiles. Este modelo en DAX itera producto por producto, comparando las diferencias de márgenes, pesos relativos y tasas de cambio frente a un estado neutral (promedio inter-periodo). 
 
-**The result: The sum of the 5 impacts is exactly equal to the profit variation in the reported bank account.**
+**El resultado: La suma de los 5 impactos es exactamente igual a la variación de la ganancia en la cuenta bancaria reportada.**
 
-## 🧮 The Math Behind the Model (The "Cross-Term" Problem)
+## 🧮 La Matemática detrás del Modelo (El problema del "Término Cruzado")
 
-Most analysts building a Profit Bridge run into a fundamental mathematical problem: **The Cross-Term**.
+La mayoría de los analistas que construyen un Puente de Ganancias se topan con un problema matemático fundamental: **El Término Cruzado**.
 
 
-Imagine your revenue is a rectangle where the base is the **Quantity (Q)** and the height is the **Price (P)**. If from one month to the next you increase the Price and also manage to sell more Quantity, your new revenue rectangle is larger. That total growth is divided into three parts:
-1. The increase from the new price.
-2. The increase from the new quantity.
-3. **The cross-term ($\Delta P \times \Delta Q$):** A small area generated by the interaction of both variables at the same time.
+Imagina que tus ingresos son un rectángulo donde la base es la **Cantidad (Q)** y la altura es el **Precio (P)**. Si de un mes a otro aumentas el Precio y también logras vender más Cantidad, tu nuevo rectángulo de ingresos es más grande. Ese crecimiento total se divide en tres partes:
+1. El aumento por el nuevo precio.
+2. El aumento por la nueva cantidad.
+3. **El término cruzado ($\Delta P \times \Delta Q$):** Una pequeña área generada por la interacción de ambas variables al mismo tiempo.
 
-In a multinational context, this gets exponentially harder because we introduce a new multiplier: the **Exchange Rate (E)**. Now we have complex 3-way cross-terms ($\Delta P \times \Delta Q \times \Delta E$). 
+En un contexto multinacional, esto se vuelve exponencialmente más difícil porque introducimos un nuevo multiplicador: el **Tipo de Cambio (E)**. Ahora tenemos términos cruzados complejos de 3 vías ($\Delta P \times \Delta Q \times \Delta E$). 
 
-**The traditional dilemma:** Who gets the credit for the money from these cross-terms? Classic systems assign them arbitrarily or leave them as an "Unexplained Variance / Residual", which muddies the analysis.
+**El dilema tradicional:** ¿A quién le damos el crédito por el dinero de estos términos cruzados? Los sistemas clásicos los asignan arbitrariamente o los dejan como un "Residual / Variación no explicada", lo cual ensucia el análisis.
 
-### The FX-Adjusted Normative Solution
-Smith et al. (2023) demonstrated that the only mathematically fair and neutral way to distribute these cross-terms (and eliminate residuals) is by using **inter-period averages**. 
+### La Solución Normativa Ajustada por FX
+Smith et al. (2023) demostraron que la única forma matemáticamente justa y neutral de repartir estos términos cruzados (y eliminar los residuales) es utilizando **promedios inter-periodo**. 
 
-By multiplying the variations by the *average state* of the other variables, the model assumes a neutral stance that perfectly collapses the algebraic equations. Denoting the Variance with the symbol **$\Delta$** and the Average with an **overbar** ($\overline{X}$), here is how this DAX model calculates the 5 impacts in the reporting currency:
+Al multiplicar las variaciones por el *estado promedio* de las otras variables, el modelo asume una postura neutral que colapsa las ecuaciones algebraicas perfectamente. Denotando la Variación con el símbolo **$\Delta$** y el Promedio con una **barra superior** ($\overline{X}$), así es como este modelo DAX calcula los 5 impactos en la moneda de reporte:
 
-* **🏷️ Price Impact (PI):** Isolates local price changes assuming volume and exchange rates remained in their average state.
+* **🏷️ Impacto de Precio (PI):** Aísla los cambios de precios locales asumiendo que el volumen y el tipo de cambio se mantuvieron en su estado promedio.
   > **$\Delta P \times \overline{Q} \times \overline{E}$**
 
-* **⚙️ Cost Impact (VI):** Isolates cost efficiency changes (negative because a cost increase reduces profit).
+* **⚙️ Impacto de Costo (VI):** Aísla los cambios en la eficiencia de costos (negativo porque un aumento de costo reduce la ganancia).
   > **$-\Delta V \times \overline{Q} \times \overline{E}$**
 
-* **📦 Volume Impact (QI):** Measures the expansion/contraction of total units sold, holding mix, margins, and currency neutral.
+* **📦 Impacto de Volumen (QI):** Mide la expansión/contracción de las unidades totales vendidas, manteniendo la mezcla, los márgenes y la moneda en estado neutral.
   > **$\Delta Q_{total} \times (\overline{P} - \overline{V}) \times \overline{Mix} \times \overline{E}$**
 
-* **🔀 Mix Effect (MI):** Measures the gain/loss obtained by selling a higher or lower proportion of high-margin products.
+* **🔀 Efecto Mix (MI):** Mide la ganancia/pérdida obtenida por vender una mayor o menor proporción de productos de alto margen.
   > **$\overline{Q}_{total} \times (\overline{P} - \overline{V}) \times \Delta Mix \times \overline{E}$**
 
-* **💱 FX Impact (Currency Fluctuation):** Isolates the pure effect of the exchange rate moving, assuming the entire operational business (Price, Cost, Vol, Mix) remained at its average state.
+* **💱 Impacto FX (Fluctuación Cambiaria):** Aísla el efecto puro del movimiento del tipo de cambio, asumiendo que todo el negocio operativo (Precio, Costo, Vol, Mix) se mantuvo en su estado promedio.
   > **$\Delta E \times [\overline{Q}_{total} \times (\overline{P} - \overline{V}) \times \overline{Mix}]$**
 
-### How does this translate to DAX?
+### ¿Cómo se traduce esto a DAX?
 
-In the source code of this Power BI model, you will notice the systematic creation of measures that sum Period 1 and Period 2, dividing them by 2 (e.g., `DIVIDE([PriceP1] + [PriceP2], 2)`). 
+En el código fuente de este modelo de Power BI, notarás la creación sistemática de medidas que suman el Periodo 1 y el Periodo 2, dividiéndolas entre 2 (Ej. `DIVIDE([PrecioP1] + [PrecioP2], 2)`). 
 
-These measures represent the average bars ($\overline{P}$, $\overline{Q}$, $\overline{Mix}$, $\overline{E}$). By using the `SUMX` iterator function to evaluate these equations row by row (product by product), all cross-terms cancel each other out, ensuring that the sum of the 5 operational and macroeconomic impacts explains **100% of the actual profit variance ($\Delta \Pi$)** without any rounding errors.
+Estas medidas representan las barras de promedio ($\overline{P}$, $\overline{Q}$, $\overline{Mix}$, $\overline{E}$). Al usar la función iteradora `SUMX` para evaluar estas ecuaciones fila por fila (producto por producto), todos los términos cruzados se anulan mutuamente, logrando que la suma de los 5 impactos operativos y macroeconómicos explique el **100% de la variación real de la ganancia ($\Delta \Pi$)** sin errores de redondeo.
